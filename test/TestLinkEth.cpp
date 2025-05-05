@@ -1,12 +1,11 @@
 #include <LinkEth.h>
+#include <gtest/gtest.h>
 
 using namespace std::string_literals;
 
-int main(int argc, char *argv[]) {
+TEST(TestLinkEth, ExampleTest) {
     LinkEth linkEth = diff::Instantiator<LinkEth>("testId"s)   //
                           .make_instance();
 
-    // run tests here
-
-    return 0;
+    EXPECT_EQ(1u, 1u);
 }

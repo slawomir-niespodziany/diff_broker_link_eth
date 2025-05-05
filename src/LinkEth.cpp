@@ -1,13 +1,18 @@
 #include <LinkEth.h>
 #include <chrono>
 #include <cstdlib>
+#include <ctime>
 #include <iostream>
 #include <thread>
 
 using namespace std::string_literals;
 
-LinkEth::LinkEth() { std::cout << type() << "{"s << id() << ", fixedReliability "s << fixedReliability_ << "%}"s << std::endl; }   // log construction
-LinkEth::~LinkEth() { std::cout << "~"s << type() << "{"s << id() << "}"s << std::endl; }                                          // log destruction
+LinkEth::LinkEth() {   // log construction
+    std::cout << type() << "{"s << id() << ", fixedReliability "s << fixedReliability_ << "%}"s << std::endl;
+    std::srand(std::time(nullptr));
+}
+
+LinkEth::~LinkEth() { std::cout << "~"s << type() << "{"s << id() << "}"s << std::endl; }   // log destruction
 
 bool LinkEth::send(const std::string &message) {
     std::this_thread::sleep_for(std::chrono::milliseconds(100));   // simulate delay
